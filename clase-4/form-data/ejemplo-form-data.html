@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo FormData</title>
+</head>
+<body>
+
+    <h1>Ejemplo de FormData</h1>
+    <hr>
+
+    <form id="miForm"> 
+        <label for="nombre">Nombre: </label>
+        <input type="text" name="nombre" id="nombre">
+
+        <br><br>
+
+        <label for="apellido">Apellidos: </label>
+        <input type="text" name="apellido" id="apellido">
+
+        <br><br>
+
+        <label for="edad">Edad:</label>
+        <input type="text" name="edad" id="edad">
+
+        <br><br>
+
+        <label for="ocupacion">Ocupación: </label>
+        <input type="text" name="ocupacion" id="ocupacion">
+
+        <br><br>
+
+        <label>Sexo:</label><br>
+
+        <label>
+            <input type="radio" name="sexo" value="masculino"> Masculino
+        </label><br>
+
+        <label>
+            <input type="radio" name="sexo" value="femenino"> Femenino
+        </label><br>
+
+        <label>
+            <input type="radio" name="sexo" value="helicoptero"> Helicóptero
+        </label>
+
+    </form>
+
+    <br><br>
+    <button type="button" onclick="enviarFormulario()">Enviar</button>
+
+    <hr>
+
+    <div id="resultado"></div>
+
+<script>
+
+    function enviarFormulario() {
+
+        const form = document.getElementById("miForm");
+        const resultado = document.getElementById("resultado");
+        const datos = new FormData(form);
+
+        console.log([...datos.entries()]);
+
+        let tabla = encabezadoTabla();
+        tabla += cuerpoTabla(datos);
+        tabla += pieTabla();
+
+        resultado.innerHTML = tabla;
+    }
+
+    function encabezadoTabla() {
+        return `<table border="1" width="75%">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Edad</th>
+                        <th>Ocupación</th>
+                        <th>Sexo</th>
+                    </tr>`;
+    }
+
+    function pieTabla() {
+        return `</table>`;
+    }
+
+    function cuerpoTabla(datos) {
+
+        const nombre = datos.get('nombre');
+        const apellido = datos.get('apellido');
+        const edad = datos.get('edad');
+        const ocupacion = datos.get('ocupacion');
+        const sexo = datos.get('sexo');
+
+        const sexLetra = sexo.charAt(0).toUpperCase();
+
+        const imagen = (sexLetra === 'M') ? "iconoM.png" :
+                       (sexLetra === 'F') ? "iconoF.png" :
+                                            "icono-otros.png";
+
+        return `<tr>
+                    <td>${nombre}</td>
+                    <td>${apellido}</td>
+                    <td>${edad}</td>
+                    <td>${ocupacion}</td>
+                    <td><img src="${imagen}" style="width: 20%;"></td>
+                </tr>`;
+    }
+
+</script>
+
+</body>
+</html>

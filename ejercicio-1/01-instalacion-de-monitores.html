@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Intalacion de moniutores</h1>
+    <hr>
+    <p ><b>cantodad de camper: </b><span id="cantcampers"> </span></p>
+
+    <br><br>
+    <p >
+    <b>cantidad de monitores a instalar</b> <span id="cantmonitore"></span>
+    </p>
+    <hr>
+
+    <script>
+        let cantcampers = Number(prompt("cantidad de estudiantes:" , "1"));
+
+        let cantmonitore = cantcampers*2;
+
+        const spancantcampers = document.getElementById("cantcampers");
+
+        const spancantmonitore = document.getElementById ("cantmonitore");
+
+        spancantcampers.innerHTML = cantcampers;
+        spancantmonitore.innerHTML = cantmonitore;
+
+        console.log("cantidad de campers: " + cantcampers);
+        console.log("cantidad de monitores: " + cantmonitore)
+
+
+    </script>
+    
+</body>
+</html>

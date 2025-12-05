@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promesa_pokemon</title>
+</head>
+<body>
+    <h1>Aprendiendo promesas con Pokémon</h1>
+    <hr>
+
+    <form id="miForm" onsubmit="return false;">
+        <label for="nombrepoke">Nombre del Pokémon:</label>
+        <input type="text" id="nombrepoke" name="nombre">
+
+        <button onclick="consultar()">Consultar</button>
+
+        <br><br>
+        <hr>
+
+        <div>
+            <p id="nompokemon"></p>
+            <div id="imgpokemon"></div>
+        </div>
+    </form>
+    
+    <script src="async-await.js"></script>
+</body>
+</html>

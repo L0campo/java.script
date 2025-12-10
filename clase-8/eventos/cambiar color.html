@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo Evento cambiar color</title>
+</head>
+<body>
+
+    <h1>Ejemplo Evento cambiar color</h1>
+    <hr>
+    <button id="cambiarColor">cambiar color de fondo</button>
+    <p></p>
+
+    <script>
+        const digitos = "0123456789ABCDEF"; 
+
+        const cambiarBackground = 
+        color => document.body.style.backgroundColor = color;
+
+        const getRandomBackround = () => Array(6).fill("").reduce(p => p += digitos[Math.floor(Math.random()* 16)] , "#");
+
+        // Evento 
+        document.getElementById("cambiarColor").addEventListener("click", () => {
+        const color = getRandomBackround ();
+        document.getElementsByTagName("p")[0].textContent = color;
+        cambiarBackground(color);
+        })
+
+        
+    </script>
+    
+</body>
+</html>

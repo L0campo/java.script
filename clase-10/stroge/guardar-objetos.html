@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>gaurdar objectos con LocalStorage</h1>
+    <hr>
+     
+    <button>gaurdar informacion</button>
+    <button>Recuperar informacion</button>
+    <button></button>
+    <button> cambiar tema</button>
+    <script>
+        const camper = {
+            nombre: "pedro pablo",
+            edad : 18,
+            genero: "masculino",
+            modulos: []
+        };
+
+        camper.modulos.push({
+            nombre: "introduccion a la programacion",
+            score:75,
+        })
+
+        camper.modulos.push({
+            nombre: "consola Linux",
+            score:90,
+        })
+
+        camper.modulos.push({
+            nombre: "Python",
+            score:50,
+        });
+
+        let vCampers = [camper,camper,camper];
+        const temaAct = localStorage.getItem("tema") || "claro";
+        const estilos = temaAct  === "oscuro" ?
+            "body  { background: #121212; color : #fff;}":
+            "body  { background: #fff; color : #000;}";
+
+            b
+
+
+
+        const btnGuardar = document.getElementsByTagName("button")[0];
+
+        const btnRecuperar = document.getElementsByTagName("button")[1];
+
+        const btnIterar = document.getElementsByTagName
+
+        btnGuardar.addEventListener("click", () => {
+            localStorage.setItem("campers", JSON.stringify(vCampers));
+            alert("guardado")
+        });
+
+        btnRecuperar.addEventListener("click", () => {
+            const strcampers = localStorage.getItem("campers")
+            alert("recuperados")
+            console.log(strcampers);
+
+            const objcamper = JSON.parse(strcampers);
+            console.table(objcamper)
+        });
+
+        btnIterar.addEventListener("click", () => {
+            const strcampers = localStorage.getItem("campers");
+            const objcamper = JSON.parse(strcampers);
+
+            // iteracion segura
+            Object.keys(localStorage).forEach((llave) => {
+                console.log(llave, " ->", localStorage[llave]);
+            })
+        });
+
+
+    </script>
+    
+</body>
+</html>
